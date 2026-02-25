@@ -9,6 +9,7 @@ import {
     User,
     Mail
 } from 'lucide-react';
+import Loader from '../components/Loader';
 import { useAuth } from '../context/AuthContext';
 import { doctorAPI } from '../services/api';
 
@@ -47,7 +48,7 @@ const DoctorDashboard = () => {
         }
     };
 
-    if (loading) return <div className="flex-center" style={{ height: '80vh' }}>Loading Console...</div>;
+    if (loading) return <Loader />;
 
     const activeCount = appointments.filter(a => a.status === 'active').length;
 

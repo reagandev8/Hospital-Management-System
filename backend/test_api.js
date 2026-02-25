@@ -1,12 +1,12 @@
 const http = require('http');
 
 const data = JSON.stringify({
-    name: 'Test Bot',
-    email: 'bot_' + Date.now() + '@example.com',
+    name: 'Tes User',
+    email: 'useer_' + Date.now() + '@example.com',
     password: 'password123',
     role: 'patient',
-    city: 'Bot City',
-    address: 'Bot St'
+    city: 'Example City',
+    address: 'Funana St'
 });
 
 const options = {

@@ -19,18 +19,19 @@ const Home = () => {
     ];
 
     return (
-        <div className="page-container">
-            <div className="container">
+        <div className="page-container bg-hospital" style={{ position: 'relative' }}>
+            <div className="hero-overlay"></div>
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 {/* Hero Section */}
-                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '4rem' }}>
-                    <h1 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '6rem' }}>
+                    <h1 className="animate-slide-up" style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem', color: 'white', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
                         Healthcare Solution for Everyone
                     </h1>
-                    <p style={{ fontSize: '1.25rem', color: 'var(--text-light)', maxWidth: '700px', margin: '0 auto 2.5rem' }}>
+                    <p className="animate-slide-up stagger-1" style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.9)', maxWidth: '700px', margin: '0 auto 2.5rem', textShadow: '0 1px 5px rgba(0,0,0,0.2)' }}>
                         A comprehensive hospital management solution designed to streamline healthcare
                         and provide an exceptional experience for both patients and medical staff.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                    <div className="animate-slide-up stagger-2" style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                         {user ? (
                             <button onClick={() => navigate(`/${user.role}-dashboard`)} className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>
                                 Go to Dashboard
@@ -51,7 +52,7 @@ const Home = () => {
                 {/* Features */}
                 <div className="grid-cols-3" style={{ marginBottom: '6rem' }}>
                     {features.map((f, i) => (
-                        <div key={i} className="card">
+                        <div key={i} className={`card glass-card animate-slide-up stagger-${i + 1}`}>
                             <div style={{ background: '#eff6ff', width: '56px', height: '56px', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                 {f.icon}
                             </div>
@@ -63,12 +64,12 @@ const Home = () => {
 
                 {/* Portal Selection */}
                 <section style={{ textAlign: 'center', marginBottom: '6rem' }}>
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', fontWeight: 700 }}>Choose Your Portal</h2>
+                    <h2 className="animate-slide-up" style={{ fontSize: '2.5rem', marginBottom: '3rem', fontWeight: 700, color: 'white' }}>Choose Your Portal</h2>
                     <div className="grid-cols-3">
                         {portals.map((p, i) => (
                             <div
                                 key={i}
-                                className="card"
+                                className={`card glass-card animate-slide-up stagger-${i + 1}`}
                                 style={{ padding: '3rem 1.5rem', cursor: 'pointer' }}
                                 onClick={() => navigate('/login', { state: { role: p.role } })}
                             >

@@ -34,8 +34,8 @@ const Register = () => {
     };
 
     return (
-        <div className="page-container flex-center">
-            <div className="card" style={{ width: '600px', padding: '2.5rem' }}>
+        <div className="page-container flex-center bg-hospital">
+            <div className="card glass-card animate-slide-up" style={{ width: '600px', padding: '2.5rem', margin: '2rem 0' }}>
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <h2 style={{ fontSize: '2rem', fontWeight: 700 }}>Create Account</h2>
                     <p style={{ color: 'var(--text-light)', marginTop: '0.5rem' }}>Join the HMS healthcare network</p>

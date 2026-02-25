@@ -23,6 +23,7 @@ export const appointmentAPI = {
     book: (data) => API.post('/appointments', data),
     getMy: () => API.get('/appointments/my'),
     cancel: (id) => API.put(`/appointments/${id}/cancel`),
+    delete: (id) => API.delete(`/appointments/${id}`),
     getDoctors: () => API.get('/appointments/doctors'),
 };
 

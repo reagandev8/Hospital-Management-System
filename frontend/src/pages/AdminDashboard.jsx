@@ -9,6 +9,7 @@ import {
     TrendingUp,
     AlertCircle
 } from 'lucide-react';
+import Loader from '../components/Loader';
 
 const AdminDashboard = () => {
     const [stats, setStats] = useState({ patients: 0, doctors: 0, appointments: 0 });
@@ -67,7 +68,7 @@ const AdminDashboard = () => {
         }
     };
 
-    if (loading) return <div className="flex-center" style={{ height: '80vh' }}>System Initializing...</div>;
+    if (loading) return <Loader />;
 
     return (
         <div className="container page-container">

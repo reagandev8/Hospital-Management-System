@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { appointmentAPI } from '../services/api';
-import { Calendar, User, Activity, ChevronRight, Loader2 } from 'lucide-react';
+import { Calendar, User, Activity, ChevronRight } from 'lucide-react';
+import Loader from '../components/Loader';
 
 const BookAppointment = () => {
     const [doctors, setDoctors] = useState([]);
@@ -66,7 +67,7 @@ const BookAppointment = () => {
         }
     };
 
-    if (loading) return <div className="flex-center" style={{ height: '80vh' }}>Loading Doctors...</div>;
+    if (loading) return <Loader />;
 
     return (
         <div className="page-container">

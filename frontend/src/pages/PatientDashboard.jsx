@@ -7,8 +7,10 @@ import {
     MapPin,
     Calendar,
     Plus,
-    Shield
+    Shield,
+    X,
 } from 'lucide-react';
+import Loader from '../components/Loader';
 import { useAuth } from '../context/AuthContext';
 import { appointmentAPI } from '../services/api';
 
@@ -43,7 +45,18 @@ const PatientDashboard = () => {
         }
     };
 
-    if (loading) return <div className="flex-center" style={{ height: '80vh' }}>Loading Dashboard...</div>;
+    const handleDelete = async (id) => {
+        if (window.confirm('Are you sure you want to delete this appointment from your history? This action cannot be undone.')) {
+            try {
+                await appointmentAPI.delete(id);
+                setAppointments(appointments.filter(app => app._id !== id));
+            } catch (error) {
+                alert('Failed to delete appointment');
+            }
+        }
+    };
+
+    if (loading) return <Loader />;
 
     return (
         <div className="container page-container">
@@ -118,15 +131,26 @@ const PatientDashboard = () => {
                                         </span>
                                     </td>
                                     <td style={{ textAlign: 'right' }}>
-                                        {(app.status === 'active' || app.status === 'pending') && (
+                                        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                                            {(app.status === 'active' || app.status === 'pending') && (
+                                                <button
+                                                    onClick={() => handleCancel(app._id)}
+                                                    className="btn"
+                                                    title="Cancel Appointment"
+                                                    style={{ padding: '0.5rem', color: '#f59e0b', backgroundColor: '#fffbeb' }}
+                                                >
+                                                    <X size={18} />
+                                                </button>
+                                            )}
                                             <button
-                                                onClick={() => handleCancel(app._id)}
+                                                onClick={() => handleDelete(app._id)}
                                                 className="btn"
+                                                title="Delete from History"
                                                 style={{ padding: '0.5rem', color: 'var(--danger)', backgroundColor: '#fef2f2' }}
                                             >
                                                 <Trash2 size={18} />
                                             </button>
-                                        )}
+                                        </div>
                                     </td>
                                 </tr>
                             )) : (

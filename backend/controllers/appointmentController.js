@@ -81,3 +81,28 @@ exports.getDoctors = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+// @desc    Delete appointment
+// @route   DELETE /api/appointments/:id
+// @access  Private
+exports.deleteAppointment = async (req, res) => {
+    try {
+        const appointment = await Appointment.findById(req.params.id);
+
+        if (!appointment) {
+            return res.status(404).json({ message: 'Appointment not found' });
+        }
+
+        // Check if user is the patient or doctor or admin
+        if (appointment.patient.toString() !== req.user._id.toString() &&
+            (appointment.doctor && appointment.doctor.toString() !== req.user._id.toString()) &&
+            req.user.role !== 'admin') {
+            return res.status(401).json({ message: 'Not authorized' });
+        }
+
+        await Appointment.findByIdAndDelete(req.params.id);
+
+        res.json({ message: 'Appointment deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

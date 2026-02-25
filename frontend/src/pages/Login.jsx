@@ -26,8 +26,8 @@ const Login = () => {
     };
 
     return (
-        <div className="page-container flex-center">
-            <div className="card" style={{ width: '400px', padding: '2.5rem' }}>
+        <div className="page-container flex-center bg-hospital">
+            <div className="card glass-card animate-slide-up" style={{ width: '400px', padding: '2.5rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <div style={{ width: '64px', height: '64px', background: 'var(--primary)', color: 'white', borderRadius: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
                         <LogIn size={32} />
