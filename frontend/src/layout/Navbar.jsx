@@ -31,10 +31,6 @@ const Navbar = () => {
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
                 {user ? (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                        <div style={{ position: 'relative', color: 'var(--text-light)', cursor: 'pointer' }}>
-                            <Bell size={20} />
-                            <span style={{ position: 'absolute', top: -2, right: -2, background: 'var(--danger)', width: '8px', height: '8px', borderRadius: '50%', border: '1px solid white' }}></span>
-                        </div>
 
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                             <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
