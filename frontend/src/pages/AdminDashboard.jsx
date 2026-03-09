@@ -68,6 +68,17 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleDeleteUser = async (id) => {
+        if (window.confirm('Are you sure you want to remove this patient?')) {
+            try {
+                await adminAPI.deleteUser(id);
+                fetchData();
+            } catch (error) {
+                alert('Failed to delete patient');
+            }
+        }
+    };
+
     if (loading) return <Loader />;
 
     return (
@@ -207,6 +218,7 @@ const AdminDashboard = () => {
                                             <th>Email</th>
                                             <th>City</th>
                                             <th>Joined</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -217,6 +229,11 @@ const AdminDashboard = () => {
                                                 <td>{u.city}</td>
                                                 <td style={{ fontSize: '0.875rem', color: 'var(--text-light)' }}>
                                                     {new Date(u.createdAt).toLocaleDateString()}
+                                                </td>
+                                                <td>
+                                                    <button onClick={() => handleDeleteUser(u._id)} style={{ color: 'var(--danger)', padding: '0.5rem', background: 'transparent', border: 'none', cursor: 'pointer' }} title="Remove Patient">
+                                                        <Trash2 size={16} />
+                                                    </button>
                                                 </td>
                                             </tr>
                                         ))}

@@ -73,6 +73,24 @@ exports.deleteDoctor = async (req, res) => {
     }
 };
 
+// @desc    Delete patient (user)
+// @route   DELETE /api/admin/users/:id
+// @access  Private/Admin
+exports.deleteUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+
+        if (user) {
+            await user.deleteOne();
+            res.json({ message: 'Patient removed' });
+        } else {
+            res.status(404).json({ message: 'Patient not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 // @desc    Get dashboard stats
 // @route   GET /api/admin/stats
 // @access  Private/Admin

@@ -29,6 +29,7 @@ export const appointmentAPI = {
 
 export const adminAPI = {
     getUsers: () => API.get('/admin/users'),
+    deleteUser: (id) => API.delete(`/admin/users/${id}`),
     getDoctors: () => API.get('/admin/doctors'),
     addDoctor: (data) => API.post('/admin/doctors', data),
     deleteDoctor: (id) => API.delete(`/admin/doctors/${id}`),
